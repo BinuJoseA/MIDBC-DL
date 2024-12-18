@@ -108,38 +108,3 @@ def calculate_dunn_index(data, labels):
 
     return dunn_index
 
-'''
-data_points = [
-    [0, 0], [1, 0], [1, 1], [2, 2], [0, 1],
-    [3, 1], [3, 0], [3, 2], [6, 3], [0, 2],
-    [1, 2], [6, 4], [6, 5]
-]
-
-# Sample clusters (list of data points)
-clist = [
-    [[0, 0], [1, 0], [1, 1], [0, 1], [0, 2], [3, 1], [3, 0], [3, 2], [2, 2], [1, 2]],
-    [[6, 4], [6, 3], [6, 5]]
-]
-
-data_point_labels = []
-
-# Iterate through the data points in the dataset
-for data_point_index, data_point in enumerate(data_points):
-    found = False  # Flag to check if the data point is found in any cluster
-    for cluster_index, cluster1 in enumerate(clist):
-        if data_point in cluster1:
-            data_point_labels.append(cluster_index)  # Assign the cluster index as the label
-            found = True
-            break
-    if not found:
-        data_point_labels.append(-1) 
-
-print('data_point_labels=',data_point_labels)
-db= calculate_davies_bouldin_index(data_points, data_point_labels)
-print('db=',db)
-dn=calculate_dunn_index(data_points, data_point_labels)
-print('dn=',dn)
-#data_points = np.array(data_points)
-db_score = davies_bouldin_score(data_points, data_point_labels)
-print('db_score=',db_score)
-'''
