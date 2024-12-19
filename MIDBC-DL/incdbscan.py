@@ -21,17 +21,17 @@ class incdbscanner:
         self.Noise = cluster('Noise')
         self.num = 0
 
-    def incdbscan(self, D, eps, MinPts):
+    def incdbscan(self, D, eps, MinPts,thld):
         for point in D:
             self.dataSet.append(point)
-            self.incrementalAdd(point, eps, MinPts)
+            self.incrementalAdd(point, eps, MinPts,thld)
             
         self.cleanupClusters()
         self.printClusters()
         
         
     
-    def expandCluster(self, point, NeighbourPoints, C, eps, MinPts):
+    def expandCluster(self, point, NeighbourPoints, C, eps, MinPts,thld):
         C.addPoint(point)
         for p in NeighbourPoints:
             if not any(np.array_equal(p, visited_point) for visited_point in self.visited):
@@ -103,7 +103,7 @@ class incdbscanner:
                 result.append(d)
         return result
     '''
-    def incrementalAdd(self, p, eps, MinPts):
+    def incrementalAdd(self, p, eps, MinPts,thld):
         self.num = self.num + 1
         #print('------------------------------------')
         #print("\nADDING point " +  ' --> ', p)
