@@ -26,7 +26,7 @@ for gen in range(generations):
     objectives = []
     for individual in population:
         eps, min_samples, mergthld = individual
-        dunn, davis, randindex = incremental_dbscan(eps, min_samples)  # You need to implement this function
+        dunn, davis, randindex,scoreindex = incremental_dbscan(eps, min_samples,mergthld)  # You need to implement this function
         objectives.append([dunn, davis, randindex,scoreindex])
     print('objectives =',objectives)
     
