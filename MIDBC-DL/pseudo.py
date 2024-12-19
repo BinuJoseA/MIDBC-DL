@@ -92,8 +92,8 @@ def calculate_pareto_front(scores):
         pareto_ranks[idx] = i + 1
     return pareto_ranks
 
-pareto_fronts = calculate_pareto_front(predicted_scores)
 
-print("Predicted Scores:", predicted_scores)
-print("Pseudo-labels:", pseudo_labels)
-print("Pareto Front Ranks:", pareto_fronts)
+
+#print("Predicted Scores:", predicted_scores)
+#print("Pseudo-labels:", pseudo_labels)
+#print("Pareto Front Ranks:", pareto_fronts)
