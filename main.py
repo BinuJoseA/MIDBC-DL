@@ -17,20 +17,22 @@ from scipy.spatial import distance
 import dunn as f2
 import davis as f3
 import score as f4
+import pseudo as f5
 
-population = [[random.uniform(min_eps, max_eps), random.randint(min_min_samples, max_min_samples)] for _ in range(population_size)]
+population = [[random.uniform(min_eps, max_eps), random.randint(min_min_samples, max_min_samples), random.randint(min_thld, max_thld)] for _ in range(population_size)]
 print('population =',population)   
 for gen in range(generations):
     # Compute the objective functions for the current population
     objectives = []
     for individual in population:
-        eps, min_samples = individual
+        eps, min_samples, mergthld = individual
         dunn, davis, randindex = incremental_dbscan(eps, min_samples)  # You need to implement this function
-        objectives.append([dunn, davis, randindex])
+        objectives.append([dunn, davis, randindex,scoreindex])
     print('objectives =',objectives)
     
-    # Non-dominated sorting to find Pareto fronts
-    fronts = non_dominated_sort(objectives)  # You can use the non_dominated_sort function from the previous answer
+   
+    #fronts = non_dominated_sort(objectives)  # You can use the non_dominated_sort function from the previous answer
+    pareto_fronts = calculate_pareto_front(objectives)
     print('fronts =',fronts)
     # Crowding distance calculation for diversity
     
